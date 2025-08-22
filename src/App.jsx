@@ -3,6 +3,7 @@ import './App.css'
 import Body from './Component/Body/Body'
 import Header from './Component/Header/Header'
 import Hero from './Component/Hero/Hero'
+import Players from './Component/Players/Players'
 
 function App() {
   const [coin, setCoin] = useState(0);
@@ -12,20 +13,22 @@ function App() {
     setCoin(coin + amount);
   };
 
-  useEffect(()=>{
+
+  useEffect(() => {
     fetch('/Players.json')
       .then(response => response.json())
       .then(data => setPlayers(data))
       .catch(error => console.error('Error fetching player data:', error));
-  },[])
+  }, [])
 
   return (
     <>
       <Header coin={coin} />
       <Hero onCoinChange={handleCoinChange} />
+      <Players players={players} />
       <Body players={players} />
     </>
   )
 }
 
-export default App
+export default App;

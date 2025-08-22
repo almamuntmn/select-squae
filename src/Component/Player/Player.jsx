@@ -1,5 +1,5 @@
 
-const Player = ({ player }) => {
+const Player = ({ player, onPlayerSelect }) => {
     return (
         <div className="border border-gray-300 rounded-lg p-4 text-left">
             <img className="w-full h-32 object-cover mb-2 rounded-sm" src={player.player_cover} alt={player.name} />
@@ -19,7 +19,7 @@ const Player = ({ player }) => {
                     <p className="text-[12px] text-gray-500 mb-3">Rating {player.rating}</p>
                     <p className="text-[14px] font-medium text-green-600">Price: ${player.price}</p>
                 </div>
-                <button className="text-[12px] mt-2 px-4 py-2 rounded border border-gray-300">Choose Player</button>
+                <button onClick={() => onPlayerSelect(player)} className="text-[12px] mt-2 px-4 py-2 rounded border border-gray-300">Choose Player</button>
             </div>
         </div>
     );
